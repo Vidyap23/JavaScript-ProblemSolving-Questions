@@ -1,0 +1,79 @@
+Arrays
+
+//Progression 1
+
+let computeProduct=(unsortedArray)=>{
+var sortedArray= unsortedArray.sort();  //sort the given array
+let negCount=0;                         //variable to hold count of negative numbers
+var maxProduct;
+for(i=0;i<2;i++){
+if(sortedArray[i]<0){                    //find how many negative numbers are there 1 or 2
+negCount++;
+}
+}
+if(negCount==2){
+maxProduct= sortedArray[0]*sortedArray[1]* sortedArray[sortedArray.length-1]     //if two negative numbers are there, max product will be given
+}
+else{
+maxProduct= sortedArray[sortedArray.length-1]*sortedArray[sortedArray.length-2]* sortedArray[sortedArray.length-3]
+}
+return maxProduct;
+}
+
+var unsortedArray= [10,2,3,-20,50]  //test 1
+var unsortedArray=[10,2,3,-20,-50] //test 2
+console.log(computeProduct(unsortedArray))
+
+
+
+
+//Progression 3 
+function removeDuplicates(array) {
+  return array.filter((a, b) => array.indexOf(a) === b)
+};
+console.log(removeDuplicates([2,2,1,3,4,4])) //test
+
+
+
+
+
+//Progression 2
+let findmissing=(unsortedarr, lowerBound, upperBound)=> {
+	
+   var sortedarr=unsortedarr.sort()
+	var sumofarray=sortedarr.reduce(sum);
+  if(sortedarr[sortedarr.length-1]>upperBound || sortedarr[0]<lowerBound)
+  return "array out of bounds"
+	upperLimitSum = upperBound * (upperBound + 1) / 2;
+	lowerLimitSum = lowerBound * (lowerBound - 1) / 2;
+
+	theoreticalSum = upperLimitSum - lowerLimitSum;
+
+	return theoreticalSum - sumofarray;
+}
+sum=(total,num)=>total+num
+console.log(findmissing([1,2,3,4,5],1,6));
+
+
+
+
+
+//Progression 4
+let largestdifference=(unsortedarr)=> {
+
+sortedarr= unsortedarr.sort();
+return sortedarr[sortedarr.length-1]- sortedarr[0]
+
+}
+console.log(largestdifference([-10,20,-20,30,40])) //test
+
+
+
+
+
+
+//Progression 6
+let intersection = (arrA,arrB)=>arrA.filter(x => arrB.includes(x));
+arrA= [1,2,3]
+arrB=[2,4,6]
+console.log(intersection(arrA,arrB))
